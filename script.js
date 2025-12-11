@@ -161,15 +161,20 @@
           }
       }
       function showToast(message, isSuccess = true) {
-          const toast = document.getElementById('toast-post');
-          if (toast) {
-              toast.querySelector('p').innerHTML = `<i class="fa-solid fa-check-circle"></i> ${message}`;
-              toast.classList.add('show');
-              setTimeout(() => {
-                  toast.classList.remove('show');
-              }, 3000);
-          }
-      }
+            const toast = document.getElementById('toast-post');
+            if (toast) {
+                const icon = isSuccess ? 'fa-check-circle' : 'fa-times-circle';
+                toast.querySelector('p').innerHTML = `<i class="fa-solid ${icon}"></i> ${message}`;
+
+                toast.classList.add('show');
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            } else {
+                alert(message);
+            }
+        }
       function enviarAvancoRegresso(e) {
           e.preventDefault();
           var nomeUsuario = document.getElementById("nome_usuario").value;
@@ -906,28 +911,26 @@
           });
       }
       function showLoading() {
-          var existingLoading = document.getElementById('loading-overlay');
-          if (existingLoading) {
-              existingLoading.remove();
-          }
-          var loadingOverlay = document.createElement('div');
-          loadingOverlay.id = 'loading-overlay';
-          var loadingContainer = document.createElement('div');
-          var spinner = document.createElement('div');
-          spinner.className = 'spinner';
-          var loadingText = document.createElement('p');
-          loadingText.textContent = 'ENVIANDO...';
-          loadingContainer.appendChild(spinner);
-          loadingContainer.appendChild(loadingText);
-          loadingOverlay.appendChild(loadingContainer);
-          document.body.appendChild(loadingOverlay);
-      }
+            let loadingOverlay = document.getElementById('loading-overlay');
+            if (!loadingOverlay) {
+                loadingOverlay = document.createElement('div');
+                loadingOverlay.id = 'loading-overlay';
+                loadingOverlay.innerHTML = `
+                    <div class="loading-container">
+                        <div class="spinner"></div>
+                        <p>ENVIANDO...</p>
+                    </div>
+                `;
+                document.body.appendChild(loadingOverlay);
+            }
+            loadingOverlay.style.display = 'flex';
+        }
       function hideLoading() {
-          var loadingOverlay = document.getElementById('loading-overlay');
-          if (loadingOverlay) {
-              loadingOverlay.remove();
-          }
-      }
+            const loadingOverlay = document.getElementById('loading-overlay');
+            if (loadingOverlay) {
+                loadingOverlay.style.display = 'none';
+            }
+        }
       function showToast(message, isSuccess = true) {
           const toast = document.getElementById('toast-post');
           if (toast) {
@@ -938,22 +941,3 @@
               }, 3000);
           }
       }
-      async function loadCSSFromGist() {
-          try {
-              const gistUrl = 'https://gist.githubusercontent.com/luiz007-coder/9fad443a3e40de0d38f84a1beedf543d/raw/db9933af4c05187a43e782f4ec1e1513f69ca8fe/style.css';
-              const response = await fetch(gistUrl);
-              if (!response.ok) {
-                  throw new Error('Erro ao carregar o CSS');
-              }
-              const cssContent = await response.text();
-              const styleElement = document.createElement('style');
-              styleElement.textContent = cssContent;
-              document.head.appendChild(styleElement);
-              
-              console.log('CSS carregado com sucesso!');
-          } catch (error) {
-              console.error('Erro ao carregar CSS:', error);
-              loadLocalCSS();
-          }
-      }
-      document.addEventListener('DOMContentLoaded', loadCSSFromGist);
