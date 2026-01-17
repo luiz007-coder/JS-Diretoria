@@ -423,14 +423,20 @@ document.getElementById("ano").textContent = new Date().getFullYear();
                   if (veredito.value === 'Deferido') {
                       analisesBBCode += `[table style="width: 80px; border-radius: 5px!Important; overflow: hidden;border: none !important; border-radius: 5px; padding-top: 10px;position: relative;top: 2.4em; left: 4.5em;margin: -3em; display: ruby-text; z-index: 10;" bgcolor="green"][tr style="overflow: hidden; border: none!important;"][td style="overflow: hidden; border: none!important; padding-top: 25px;"][color=white]<i class="fas fa-check"></i> DEFERIDO[/color][/td][/tr][/table]
       [table style="overflow: hidden; border: none!important; box-shadow: 0 0 0 1px green; border-radius: 5px!Important;"][tr style="overflow: hidden; border: none!important; border-radius: 5px!important;"][td style="overflow: hidden; border: none!important;"]
-      [justify][b]${nickname.value}:[/b] ${comentario.value}[/justify][/td][/tr][/table]
 
+      [table style='z-index: 999;margin-top: -67px;width: max-content;position: relative;overflow: hidden;border: none!important;border-radius: 15px!important;padding: 0;top: 40px;' bgcolor='green'][tr style='border: none!important; overflow: hidden;'][td style='border: none!important; padding: 0;'][center][img]https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=${nickname.value}&direction=2&head_direction=2&size=m&headonly=1[/img][/center][/td][/tr][/table]
+      [table style='margin-bottom: 9px;width: max-content;max-width: 100%;padding: 0;line-height: 0;border: none!important;box-shadow: 0 0 0 1px green;border-radius: 150px!important;position: relative;z-index: 0;left: 42px;top: -20px; margin-bottom: -31px;'][tr style='border: none!important;'][td style=' border: none!important;'][left][b]Diretor(a)[/b] ${nickname.value}[/left][/td][/tr][/table]
+
+      [justify]${comentario.value}[/justify][/td][/tr][/table]
       `;
                   } else {
                       analisesBBCode += `[table style="width: 80px; border-radius: 5px!Important; overflow: hidden;border: none !important; border-radius: 5px; padding-top: 10px;position: relative;top: 2.4em; left: 4.5em;margin: -3em; display: ruby-text; z-index: 10;" bgcolor="red"][tr style="overflow: hidden; border: none!important;"][td style="overflow: hidden; border: none!important; padding-top: 25px;"][color=white]<i class="fas fa-times"></i> INDEFERIDO[/color][/td][/tr][/table]
-      [table style="overflow: hidden; border: none!important; box-shadow: 0 0 0 1px red; border-radius: 5px!Important;"][tr style="overflow: hidden; border: none!important; border-radius: 5px!important;"][td style="overflow: hidden; border: none!important;"]
-      [justify][b]${nickname.value}:[/b] ${comentario.value}[/justify][/td][/tr][/table]
 
+      [table style="overflow: hidden; border: none!important; box-shadow: 0 0 0 1px red; border-radius: 5px!Important;"][tr style="overflow: hidden; border: none!important; border-radius: 5px!important;"][td style="overflow: hidden; border: none!important;"]
+      [table style='z-index: 999;margin-top: -67px;width: max-content;position: relative;overflow: hidden;border: none!important;border-radius: 15px!important;padding: 0;top: 40px;' bgcolor='red'][tr style='border: none!important; overflow: hidden;'][td style='border: none!important; padding: 0;'][center][img]https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=${nickname.value}&direction=2&head_direction=2&size=m&headonly=1[/img][/center][/td][/tr][/table]
+      [table style='margin-bottom: 9px;width: max-content;max-width: 100%;padding: 0;line-height: 0;border: none!important;box-shadow: 0 0 0 1px red;border-radius: 150px!important;position: relative;z-index: 0;left: 42px;top: -20px; margin-bottom: -31px;'][tr style='border: none!important;'][td style=' border: none!important;'][left][b]Diretor(a)[/b] ${nickname.value}[/left][/td][/tr][/table]
+
+      [justify]${comentario.value}[/justify][/td][/tr][/table]
       `;
                   }
               }
@@ -439,24 +445,17 @@ document.getElementById("ano").textContent = new Date().getFullYear();
               alert('Preencha pelo menos uma análise completa (veredito, nickname e comentário)!');
               return;
           }
-          var mp = `[table  style="border: none!important; overflow: hidden; border-radius: 5px; line-height: 0.1em" bgcolor="#65b026"][tr style="overflow: hidden; border: none !important;"][td style="border: none!important; overflow: hidden"][table  style="border: none!important; overflow: hidden; border-radius: 5px; line-height: 0.6em; margin: -10px;" bgcolor="#212121"][tr style="overflow: hidden; border: none !important;"][td style="border: none!important; overflow: hidden"][img]https://i.imgur.com/8RaCNua.png[/img]
-      [table  style="border: none!important; border-radius: 5px; overflow: hidden; width: 40%; margin: -2% auto; top: 0.8em; position: relative; z-index: 10; justify-content: center; box-shadow: -8px 0px 0px 0px #4b8410, 1px 4px 16px 0px #53891b6e, -1px -4px 14px 0px #00ff1473;" bgcolor="#65b026"][tr style="border: none!important;"][td style="border: none!important;"][center][color=white][b][size=16][font=Poppins]ANÁLISE INDEFERIDA[/font][/size][/b][/color][/center][/td][/tr][/table]
+          var mp = `[table  style="overflow: hidden; border-radius: 10px; width: 100%; margin: 0px auto; z-index: 1; position: relative;"][tr style="border: none !important;"][td style="border: none !important; padding: 1px; width: 100%;" bgcolor="#080D01"][table  style="overflow: hidden; border-radius: 10px; width: 100%; font-family Poppins; font-size: 14px;"][tr style="border: none !important;"][td style="border: none !important; padding: 0px; width: 100%;" bgcolor="#4C8613"][img]https://i.imgur.com/Ewasqzu.png[/img][/td][/tr][tr style="border: none !important;"][td style="border: none !important; padding: 5px; width: 100%;" bgcolor="#165519"][table  style="overflow: hidden; border-radius: 150px; width: 60%; margin: 0 auto; margin-top: -40px; z-index: 2; position: relative;"][tr style="border: none !important;"][td style="border: none !important; padding: 0px; width: 100%;" bgcolor="#080D01"][table  style="overflow: hidden; border-radius: 10px"][tr style="border: none !important;"][td style="border: none !important; padding: 3px; width: 100%;" bgcolor="#247411"][size=20][b][font=Poppins][color=#F0F0F0]CARTA DE ANÁLISE INDEFERIDA[/color][/font][/b][/size][/td][/tr][/table][/td][/tr][/table][table  style="overflow: hidden; border-radius: 10px;  width: 100%; margin: 0 auto; margin-top: -20px; z-index: 1; position: relative;"][tr style="border: none !important;"][td style="border: none !important; padding: 0px; width: 100%;" bgcolor="#080D01"][table  style="overflow: hidden; border-radius: 10px; width: 100%;"][tr style="border: none !important;"][td style="border: none !important; padding-top: 30px!important; padding-bottom: 0px; width: 100%;" bgcolor="#041600"][color=white][font=Poppins][justify][center]Saudações, [color=#65b026][b]{USERNAME}[/b][/color]
+      [table style="width: 20%; border-radius: 10px;border: none!important; overflow: hidden; line-height: 1em; margin-top:0.6em" bgcolor="#65b026"][tr style="overflow: hidden; border: none !important;"][td style="border: none!important; overflow: hidden;  padding: 1px"][/td][/tr][/table][/center]
 
-      [table  style="width: 100%; border-radius: 5px; border-bottom: none!important; border-top: none!Important; border-right: none!important; border-left: 5px solid #65b026!important; overflow: hidden; position: relative; z-index: 1;line-height: 1.6em; margin: 0 auto; border-top: 3px solid #212121!important; box-shadow: -8px 0px 0px 0px #65b026;" bgcolor="#ffffff"][tr style="border: none!important; overflow: hidden"][td style="border: none!important; overflow: hidden"]
-      [font=Poppins][center][b][color=#4b8410]Saudações, {USERNAME}![/color][/b][/center]
+      Por meio desta Mensagem Privada, informo-lhe que sua solicitação de análise de avanço foi [b][color=#65b026]indeferida[/color][/b]. Em caso de insatisfação com o resultado, é possível protocolar recurso na Central de Sindicâncias para análise da Presidência do órgão ou recorrer diretamente à segunda instância. Seguem as análises abaixo, uma vez que a solicitação precisou ser apreciada por colegiado, devido à inexistência de diretores ativos no seu turno.[/justify][/font][/color]
 
-      [justify]Por meio desta Mensagem Privada, comunico-lhe que a sua análise solicitada foi [b]processada[/b] pela [b]Diretoria do Corpo Executivo[/b]. Segue abaixo o resultado das análises:
-
-      [justify][spoiler="Análises"]
-      ${analisesBBCode}[/spoiler][/justify]
-
-      [table class="rank instable" style=" border-radius: 5px!important; border: none!important; margin: 0em; font-weight: 500; line-height: 0em;" bgcolor="black"][tr style="border: none;"][td style="border: none!important;"]<i class="fas  fa-file-import"></i>[color=black]___[/color] [color=white]Para abrir uma nova análise ou entrar em contato com o diretor responsável,[/color] [url=https://www.policiarcc.com/t23956-rcc-abertura-de-analises][b]clique aqui[/b][/url][/td][/tr][/table][/justify][/font][/td][/tr][/table]
-
+      [table  style="z-index: 99;margin-top: -56px;top: 41px;right: -20px;position: relative;font-weight: 500;border-radius: 150px;width: 40%;float: left;overflow: hidden;" bgcolor="#1a560c"][tr][td style="overflow: hidden; padding: 2%"][font=Poppins][color=#FFFFFF][b]EXPOSIÇÃO DE ANÁLISES[/b][/color][/font][/td][/tr][/table][table  style="overflow: hidden; border-radius: 10px; width: 100%; margin: 0px auto; z-index: 1; position: relative;"][tr style="border: none !important;"][td style="border: none !important; padding: 1px; width: 100%;" bgcolor="#1a560c"][table  style="padding-top: 10px; font-weight: 500; border-radius: 10px 10px 10px 10px; width: 100%; overflow: hidden;" bgcolor="#162612"][tr][td style="overflow: hidden; padding-top: 25px;"][color=white][justify][font=Poppins]${analisesBBCode}[/font][/justify][/color][/td][/tr][/table][/td][/tr][/table]
 
       [color=white][font=Poppins][color=#4b8410]<i class="fas fa-code"></i>[/color] por [b]Aloscon[/b] | Todos os direitos reservados à [b]Diretoria do Corpo Executivo[/b].[/font][/color]
-      [/td][/tr][/table][/td][/tr][/table]`;
+      [/font][/justify][/td][/tr][/table][/td][/tr][/table][/td][/tr][/table][/td][/tr][/table]`;
           showLoading();
-          send_MP("[DIR] Análise Processada", username, mp);
+          send_MP("[DIR] Carta de Análise Indeferida", username, mp);
       }
       function enviarAnaliseNegada(e) {
           e.preventDefault();
