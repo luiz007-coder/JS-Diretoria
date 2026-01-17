@@ -1,4 +1,4 @@
-      document.getElementById("ano").textContent = new Date().getFullYear();
+document.getElementById("ano").textContent = new Date().getFullYear();
       let currentTopic = 'PESSOAS';
       let analiseCount = 3;
       document.addEventListener("DOMContentLoaded", function () {
@@ -724,17 +724,19 @@
           showLoading();
           send_MP("[DIR] Carta de Projeto Reprovado", username, mp);
       }
-      function enviarCartaTransparenciaSindicancial(e) {
-          e.preventDefault();
-          var username = document.getElementById("username_sindicancia").value;
-          var nomeApelante = document.getElementById("nome_apelante").value;
-          var codigoIdentificacao = document.getElementById("codigo_identificacao").value;
-          var parecerSindicancia = document.getElementById("parecer_sindicancia").value;
-          var comentarioFundamentacao = document.getElementById("comentario_fundamentacao").value;
-          if (!username || !nomeApelante || !codigoIdentificacao || !parecerSindicancia || !comentarioFundamentacao) {
-              alert('Preencha todos os campos!');
-              return;
-          }
+      function enviarCartaTransparencia(event) {
+            event.preventDefault();
+            var username = document.getElementById("username_sindicancia").value;
+            var nomeApelante = document.getElementById("nome_apelante").value;
+            var nicknameReus = document.getElementById("nickname_reus").value;
+            var codigoIdentificacao = document.getElementById("codigo_identificacao").value;
+            var parecerSindicancia = document.getElementById("parecer_sindicancia").value;
+            var comentarioFundamentacao = document.getElementById("comentario_fundamentacao").value;
+            
+            if (!username || !nomeApelante || !nicknameReus || !codigoIdentificacao || !parecerSindicancia || !comentarioFundamentacao) {
+                alert('Preencha todos os campos!');
+                return;
+            }
           var mp = `[table style="border: none!important; overflow: hidden; border-radius: 5px; line-height: 0.1em" bgcolor="#65b026"][tr style="overflow: hidden; border: none !important;"][td style="border: none!important; overflow: hidden"][table style="border: none!important; overflow: hidden; border-radius: 5px; line-height: 0.6em; margin: -10px;" bgcolor="#212121"][tr style="overflow: hidden; border: none !important;"][td style="border: none!important; overflow: hidden"][img]https://i.imgur.com/8RaCNua.png[/img]
       [table style="border: none!important; border-radius: 5px; overflow: hidden; width: 40%; margin: -2% auto; top: 0.8em; position: relative; z-index: 10; justify-content: center; box-shadow: -8px 0px 0px 0px #4b8410, 1px 4px 16px 0px #53891b6e, -1px -4px 14px 0px #00ff1473;" bgcolor="#65b026"][tr style="border: none!important;"][td style="border: none!important;"][center][color=white][b][size=16][font=Poppins]CARTA DE TRANSPARÊNCIA SINDICANCIAL[/font][/size][/b][/color][/center][/td][/tr][/table]
 
@@ -756,15 +758,16 @@
           showLoading();
           send_MP("[DIR] Carta de Transparência Sindicancial", username, mp);
       }
-      function enviarCartaIntimacao(e) {
-          e.preventDefault();
-          var username = document.getElementById("username_intimacao").value;
-          var tipoProcesso = document.getElementById("tipo_processo").value;
-          var motivo = document.getElementById("motivo_intimacao").value;
-          if (!username || !tipoProcesso || !motivo) {
-              alert('Preencha todos os campos!');
-              return;
-          }
+      function enviarCartaIntimacao(event) {
+            event.preventDefault();
+            var username = document.getElementById("username_intimacao").value;
+            var tipoProcesso = document.getElementById("tipo_processo_intimacao").value;
+            var motivo = document.getElementById("motivo_intimacao_texto").value;
+            
+            if (!username || !tipoProcesso || !motivo) {
+                alert('Preencha todos os campos!');
+                return;
+            }
           var tipoTexto = tipoProcesso === 'análise de regresso' ? 'análise de regresso de especialização' : 'sindicância';
           var tipoTitulo = tipoProcesso === 'análise de regresso' ? 'Análise de Regresso' : 'Sindicância';
           
@@ -852,6 +855,42 @@
           showLoading();
           send_MPGroup("[DIR] Reunião Geral", "268", mp);
       }
+      function enviarCartaAbertura(event) {
+            event.preventDefault();
+            var tipoAnalise = document.getElementById("tipo_analise_abertura").value;
+            var cargoNickname = document.getElementById("cargo_nickname_abertura").value;
+            var dataLimite = document.getElementById("data_limite_abertura").value;
+            var horarioLimite = document.getElementById("horario_limite_abertura").value;
+            var linkTopico = document.getElementById("link_topico_abertura").value;
+            
+            if (!tipoAnalise || !cargoNickname || !dataLimite || !horarioLimite || !linkTopico) {
+                alert('Preencha todos os campos!');
+                return;
+            }
+            
+            var mensagemRegresso = '';
+            if (tipoAnalise === 'regresso') {
+                mensagemRegresso = 'Ressalta-se que, por se tratar de um regresso, é indispensável a manutenção do decoro, sendo expressamente vedado comentar o caso com demais diretores. O descumprimento do prazo estabelecido para resposta poderá acarretar [b][color=#65b026]advertência interna[/color][/b], enquadrada como [b][color=#65b026]Abandono de Dever/Negligência[/color][/b].';
+            }
+            
+            var mp = `[table  style="overflow: hidden; border-radius: 10px; width: 100%; margin: 0px auto; z-index: 1; position: relative;"][tr style="border: none !important;"][td style="border: none !important; padding: 1px; width: 100%;" bgcolor="#080D01"][table  style="overflow: hidden; border-radius: 10px; width: 100%; font-family Poppins; font-size: 14px;"][tr style="border: none !important;"][td style="border: none !important; padding: 0px; width: 100%;" bgcolor="#4C8613"][img]https://i.imgur.com/Ewasqzu.png[/img][/td][/tr][tr style="border: none !important;"][td style="border: none !important; padding: 5px; width: 100%;" bgcolor="#165519"][table  style="overflow: hidden; border-radius: 150px; width: 60%; margin: 0 auto; margin-top: -40px; z-index: 2; position: relative;"][tr style="border: none !important;"][td style="border: none !important; padding: 0px; width: 100%;" bgcolor="#080D01"][table  style="overflow: hidden; border-radius: 10px"][tr style="border: none !important;"][td style="border: none !important; padding: 3px; width: 100%;" bgcolor="#247411"][size=20][b][font=Poppins][color=#F0F0F0]CARTA DE ABERTURA DE ANÁLISE[/color][/font][/b][/size][/td][/tr][/table][/td][/tr][/table][table  style="overflow: hidden; border-radius: 10px;  width: 100%; margin: 0 auto; margin-top: -20px; z-index: 1; position: relative;"][tr style="border: none !important;"][td style="border: none !important; padding: 0px; width: 100%;" bgcolor="#080D01"][table  style="overflow: hidden; border-radius: 10px; width: 100%;"][tr style="border: none !important;"][td style="border: none !important; padding-top: 30px!important; padding-bottom: 0px; width: 100%;" bgcolor="#041600"][color=white][font=Poppins][justify][center]Saudações, [color=#65b026][b]{USERNAME}[/b][/color]
+        [table style="width: 20%; border-radius: 10px;border: none!important; overflow: hidden; line-height: 1em; margin-top:0.6em" bgcolor="#65b026"][tr style="overflow: hidden; border: none !important;"][td style="border: none!important; overflow: hidden;  padding: 1px"][/td][/tr][/table][/center]
+
+        Por meio desta mensagem privada, informo que foi aberta uma análise na [b][color=#65b026][DIR] Central de Especializações.[/color][/b] As informações correspondentes seguem anexas abaixo para conhecimento e no aguardo de sua resposta quanto à análise, caso esteja ativo no momento. Desconsidere esta mensagem caso se encontre de licença no órgão no momento do recebimento.[/justify][/font][/color]
+
+        [table  style="z-index: 99; margin-top: -55px; top: 30px; right: -20px;  position: relative; font-weight: 500; border-radius: 150px; width: 40%; float: left; overflow: hidden;" bgcolor="#1a560c"][tr][td style="overflow: hidden; padding: 2%"][font=Poppins][color=#FFFFFF][b]ANÁLISE DE ${tipoAnalise.toUpperCase()}[/b][/color][/font][/td][/tr][/table]
+        [table  style="overflow: hidden; border-radius: 10px; width: 100%; margin: 0px auto; z-index: 1; position: relative;"][tr style="border: none !important;"][td style="border: none !important; padding: 1px; width: 100%;" bgcolor="#1a560c"][table  style="padding-top: 10px; font-weight: 500; border-radius: 10px 10px 10px 10px; width: 100%; overflow: hidden;" bgcolor="#162612"][tr][td style="overflow: hidden; padding-top: 35px;"][color=white][justify][font=Poppins]A análise de [b][color=#65b026]${tipoAnalise}[/color][/b] refere-se ao [b][color=#65b026]${cargoNickname}[/color][/b] e permanecerá aberta até [b][color=#65b026]${dataLimite}[/color][/b], às [b][color=#65b026]${horarioLimite}[/color][/b], aguardando sua manifestação no respectivo tópico, por meio do botão de acesso abaixo.
+
+        ${mensagemRegresso}[/font][/justify][/color][/td][/tr][/table][/td][/tr][/table]
+        [url=${linkTopico}][table  style="z-index: 99;margin-top: -53px;top: 10px;right: 30px;position: relative;font-weight: 500;border-radius: 150px;width: 40%;float: right;overflow: hidden;" bgcolor="#247411"][tr][td style="overflow: hidden;padding: 4%;"][font=Poppins][color=white][b]CLIQUE AQUI[/b][/color][/font][/td][/tr][/table][/url]
+        [color=white][font=Poppins][color=#4b8410]<i class="fas fa-code"></i>[/color] por [b]Aloscon[/b] | Todos os direitos reservados à [b]Diretoria do Corpo Executivo[/b].[/font][/color]
+        [/font][/justify][/td][/tr][/table][/td][/tr][/table][/td][/tr][/table][/td][/tr][/table]`;
+            
+            showLoading();
+            var username = cargoNickname.split(' ').pop();
+            send_MP("[DIR] Carta de Abertura de Análise", username, mp);
+        }
+
       function send_MP(title, user, message) {
           showLoading();
           
